@@ -1,3 +1,7 @@
+{%extends 't1/base.html'%}
+
+{%block body%}
+{%block title%}Album Details{%endblock%}
 <h1>{{album.title}}</h1>
 <h1>{{album.genre}}</h1>
 
@@ -17,3 +21,4 @@
     {%endfor %}
     <input type="submit" value="Favourite">
 </form>
+{%endblock%}

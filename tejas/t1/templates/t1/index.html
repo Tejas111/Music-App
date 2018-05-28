@@ -1,9 +1,13 @@
-{%if all_albums %}
-    <h1>These are the albums:</h1>
+{% extends 't1/base.html'%}
+ 
+{% block body%}
+  {%if object_list %}
+      <h1>These are the albums:</h1>
 
-    {%for album in all_albums%}
-        <li><a href="{% url 'detail' album.id %}">{{album.title}}</a></li>
-    {%endfor%}
-{%else%}
-    <h3>There are no albums present</h3>
-{%endif%}
+      {%for album in object_list%}
+          <li><a href="{% url 't1:detail' album.id %}">{{album.title}}</a></li>
+      {%endfor%}
+  {%else%}
+      <h3>There are no albums present</h3>
+  {%endif%}
+{%endblock%}

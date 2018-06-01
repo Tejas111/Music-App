@@ -1,4 +1,4 @@
-"""tejas URL Configuration
+"""website URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -14,14 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include,path
-from django.conf import settings
-from django.conf.urls.static import static
-
+from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
+from companies import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('t1/',include('t1.urls')),
+    path('stocks/', views.StockList.as_view()),
 ]
-if settings.DEBUG:
-    urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

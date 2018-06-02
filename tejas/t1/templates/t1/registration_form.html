@@ -1,4 +1,4 @@
-{% extends 't1/base.html' %}
+{% extends 't1/base_visitor.html' %}
 {% block title %}Register{% endblock %}
 {% block register_active %}active{% endblock %}
 
@@ -23,7 +23,9 @@
                         </div>
                     </form>
                 </div>
-                
+                <div class="panel-footer">
+                    Already have an account? <a href="{% url 't1:login_user' %}">Click here</a> to log in.
+                </div>
             </div>
         </div>
     </div>

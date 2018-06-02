@@ -7,6 +7,7 @@ urlpatterns=[
     re_path(r'^(?P<pk>[0-9]+)/$',views.DetailView.as_view(),name='detail'),
     #re_path(r'^(?P<album_id>[0-9]+)/favorite/$',views.favorite,name='favorite'),
     path('album/add/',views.AlbumCreate.as_view(),name='album-add'),
+    re_path(r'^login_user/$', views.login_user, name='login_user'),
     re_path(r'album/(?P<pk>[0-9]+)/$',views.AlbumUpdate.as_view(),name='album-update'),
     re_path(r'album/(?P<pk>[0-9]+)/delete/$',views.AlbumDelete.as_view(),name='album-delete'),
 ]

@@ -26,7 +26,7 @@ class AlbumUpdate(UpdateView):
 
 class AlbumDelete(DeleteView):
     model = album
-    success_url= reverse_lazy('music:index') 
+    success_url= reverse_lazy('t1:index') 
 
 def register(request):
     form = UserForm(request.POST or None)
@@ -46,3 +46,22 @@ def register(request):
         "form": form,
     }
     return render(request, 't1/registration_form.html', context) 
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username,password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request,user)
+                Albums = album.objects.filter(user = request.user)
+                return render(request, 't1/index.html', {'albums': Albums})
+        else:
+            return render(request, 't1/login.html', {'error_message': 'Your account has been disabled'})
+    else:
+        return render(request, 't1/login.html', {'error_message': 'Invalid login'})
+    return render(request, 't1/login.html')
+
+
